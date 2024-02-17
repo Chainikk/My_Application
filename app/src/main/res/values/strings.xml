@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Budget Planner</string>
+    <string name="title_name">Budget Planner</string>
+    <string name = "next_button">Далее</string>
+    <string name = "log_button">Вывод в Log</string>
+    <string name="todo">TODO</string>
+</resources>
