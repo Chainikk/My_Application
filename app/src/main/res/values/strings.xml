@@ -1,7 +1,13 @@
 <resources>
-    <string name="app_name">Budget Planner</string>
-    <string name="title_name">Budget Planner</string>
-    <string name = "next_button">Далее</string>
-    <string name = "log_button">Вывод в Log</string>
+    <string name="app_name">Sleep Monitor</string>
+    <string name="title_name2">Budget Planner</string>
+    <string name="title_name1">Sleep Monitor</string>
+    <string name="next_button">Далее</string>
+    <string name="back_button">Назад</string>
+    <string name="log_button">Вывод в Log</string>
     <string name="todo">TODO</string>
+    <string name="input_field">Поле для ввода</string>
+    <string name="changeActivity">Перейти к SecondActivity</string>
+    <string name="secondactivity">SecondActivity</string>
+    <string name="mainactivity">Вернуться в MainActivity</string>
 </resources>
