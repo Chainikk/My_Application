@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ImageButton;
 
 import java.util.Objects;
 
@@ -18,15 +19,15 @@ public class SecondActivity extends AppCompatActivity {
         getArgs();
     }
     private void getArgs(){
-       Bundle arg = getIntent().getExtras();
+        Bundle arg = getIntent().getExtras();
         assert arg != null;
         String name = Objects.requireNonNull(arg.get("key")).toString();
         Log.i(MainActivity.TAG, name);
     }
     public void onClick1(View view) {
         Intent intent = new Intent();
-        intent.putExtra(KEY, "Result returned from SecondActivity");
-        setResult(1, intent);
+        intent.putExtra(KEY, "It's time to wake up");
+        setResult(RESULT_OK, intent);
         finish();
     }
 }
