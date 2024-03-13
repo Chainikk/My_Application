@@ -5,50 +5,30 @@ import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
-    public static final String TAG = "sleepMonitor";
-    public static final String KEY = "key";
+    public MainActivity(){
+        super(R.layout.activity_main);
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        findViewById(R.id.button).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, SecondActivity.class);
-                intent.putExtra(KEY, "It's time to sleep");
-                mStartForResult.launch(intent);
-            }
-        });
+        if (savedInstanceState == null) {
+            getSupportFragmentManager()
+                    .beginTransaction()
+                    .setReorderingAllowed(true)
+                    .add(R.id.fragment_container_view, FirstFragment.class, null)
+                    .add(R.id.fragment_container_view, SecondFragment.class, null)
+                    .add(R.id.fragment_container_view, ThirdFragment.class, null)
+                    .commit();
+        }
     }
-
-    public void logClick(View view) {
-        Log.i(TAG, "Вывод Log по нажатию");
-    }
-    ActivityResultLauncher<Intent> mStartForResult = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(),
-            new ActivityResultCallback<ActivityResult>() {
-                @Override
-                public void onActivityResult(ActivityResult result) {
-                    if (result.getResultCode() == AppCompatActivity.RESULT_OK) {
-                        Intent data = result.getData();
-                        String returnedData = data.getStringExtra("key");
-                        Log.i(TAG, "Returned data from SecondActivity: " + returnedData);
-                    }
-                    else {
-                        Log.i(TAG, "No data returned from SecondActivity");
-                    }
-                }
-            }
-    );
-
-    /*public void onCLick(View view){
-        Intent intent = new Intent(this, SecondActivity.class);
-        startActivity(intent);
-    }*/
 }
