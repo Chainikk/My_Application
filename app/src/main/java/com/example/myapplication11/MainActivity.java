@@ -21,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (savedInstanceState == null) {
+        /*if (savedInstanceState == null) {
             getSupportFragmentManager()
                     .beginTransaction()
                     .setReorderingAllowed(true)
@@ -29,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
                     .add(R.id.fragment_container_view, SecondFragment.class, null)
                     .add(R.id.fragment_container_view, ThirdFragment.class, null)
                     .commit();
-        }
+        }*/
+        getSupportFragmentManager().beginTransaction().add(R.id.fragment_container_view, new StartFragment()).commit();
     }
 }
