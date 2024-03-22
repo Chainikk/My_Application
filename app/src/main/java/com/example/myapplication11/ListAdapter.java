@@ -37,13 +37,8 @@ public class ListAdapter extends ArrayAdapter<Item> {
         Item item = items.get(position);
         textView.setText(item.getText());
         imageView.setImageResource(item.getImageResource());
-        imageView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(v.getContext(), "Item" + (position + 1), Toast.LENGTH_SHORT).show();
-                Log.d("ListView", "Item" + (position + 1));
-            }
-        });
+
+
         return view;
     }
 }

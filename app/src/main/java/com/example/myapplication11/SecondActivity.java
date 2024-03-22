@@ -2,13 +2,9 @@ package com.example.myapplication11;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.View;
-import android.widget.ImageButton;
 
-import java.util.Objects;
+import com.example.myapplication11.fragments.SecondFragment;
 
 public class SecondActivity extends AppCompatActivity {
     public SecondActivity(){
@@ -28,6 +24,10 @@ public class SecondActivity extends AppCompatActivity {
         }
         //getArgs();
     }
+    /*Bundle bundle = new Bundle();
+                String result = "Данные, переданные из StartFragment в RecyclerFragment";
+                bundle.putString("recyclerKey", result);*/
+
     /*private void getArgs(){
         Bundle arg = getIntent().getExtras();
         assert arg != null;

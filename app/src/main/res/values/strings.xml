@@ -14,4 +14,5 @@
     <string name="listview">ListView</string>
     <string name="returnList">Вернуться на стартовый экран</string>
     <string name="recyclerview">RecyclerView </string>
+    <string name="notification">Notification</string>
 </resources>

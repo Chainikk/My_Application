@@ -1,6 +1,6 @@
-package com.example.myapplication11;
+package com.example.myapplication11.fragments;
 
-import android.content.Intent;
+import android.content.Context;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -14,10 +14,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import java.util.ResourceBundle;
+import com.example.myapplication11.R;
 
 public class FirstFragment extends Fragment {
     public FirstFragment() {
@@ -27,12 +26,28 @@ public class FirstFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if (savedInstanceState == null) {
+           getChildFragmentManager()
+                    .beginTransaction()
+                    .setReorderingAllowed(true)
+                    .add(R.id.fragment_container_view1, SecondFragment.class, null)
+                    .commit();
+        }
+        Log.d(TAG, "onCreate");
+    }
+
+    @Override
+    public void onAttach(@NonNull Context context) {
+        super.onAttach(context);
+        Toast.makeText(getContext(), "onAttach", Toast.LENGTH_LONG).show();
+        Log.d(TAG, "onAttach");
     }
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        Log.d(TAG, "onCreateView");
         View view = inflater.inflate(R.layout.fragment_first, container, false);
         EditText editText = view.findViewById(R.id.editField);
         Button button = view.findViewById(R.id.button);
@@ -46,6 +61,13 @@ public class FirstFragment extends Fragment {
             }
         });
 
+        getChildFragmentManager().setFragmentResultListener("Key1", this, new FragmentResultListener() {
+            @Override
+            public void onFragmentResult(@NonNull String requestKey, @NonNull Bundle bundle) {
+                String result = bundle.getString("bundleKey1");
+                editText.setText(result);
+            }
+        });
         return view;
     }
 
@@ -59,6 +81,7 @@ public class FirstFragment extends Fragment {
     public void onViewStateRestored(@Nullable Bundle savedInstanceState) {
         super.onViewStateRestored(savedInstanceState);
         Toast.makeText(getContext(), "onViewStateRestored", Toast.LENGTH_LONG).show();
+        Log.d(TAG, "onViewStateRestored");
     }
 
     @Override

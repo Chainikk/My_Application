@@ -1,4 +1,4 @@
-package com.example.myapplication11;
+package com.example.myapplication11.fragments;
 
 import android.os.Bundle;
 
@@ -12,6 +12,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+
+import com.example.myapplication11.R;
 
 
 public class SecondFragment extends Fragment {
@@ -33,13 +35,15 @@ public class SecondFragment extends Fragment {
                 textView.setText(result);
             }
         });
+
+
         Button button = view.findViewById(R.id.button10);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Bundle result = new Bundle();
-                String name = textView.getText().toString();
-                result.putString("bundleKey1", name);
+                //String name = textView.getText().toString();
+                result.putString("bundleKey1", "Результат от дочернего фрагмента");
                 getParentFragmentManager().setFragmentResult("Key1", result);
             }
         });
